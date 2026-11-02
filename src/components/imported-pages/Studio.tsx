@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { BrandLoader } from "@/components/BrandLoader";
-import { FirstUseTour } from "@/components/onboarding/FirstUseTour";
 import { Button } from "@/components/ui/button";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "@/lib/router-compat";
@@ -107,7 +106,6 @@ export default function Studio() {
         </div>
       ) : (
         <div className="relative flex flex-1 flex-col space-y-6 pb-8">
-          <FirstUseTour area="studio" userId={user.id} />
           {/* Profile switcher: Privacy Alias and Verified Profile are two separate canvases. */}
           <div data-tour="studio-pages" role="tablist" aria-label={t("studio.mode.pages")} className="!mt-0 flex flex-nowrap gap-1 rounded-full bg-transparent p-0.5 pr-7 md:flex-wrap md:gap-2 md:p-1">
             {tabs.map(({ id, label, hint, Icon, locked }) => {
