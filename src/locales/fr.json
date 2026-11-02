@@ -1630,5 +1630,11 @@
   "tourEngine.identity.email.title": "Adresse e-mail principale",
   "tourEngine.identity.email.body": "Modifiez votre adresse ici. La nouvelle n’est active qu’après confirmation.",
   "tourEngine.identity.push.title": "Protocole ROUT Push",
-  "tourEngine.identity.push.body": "Transmettez un changement d’adresse aux apps liées sans relais."
+  "tourEngine.identity.push.body": "Transmettez un changement d’adresse aux apps liées sans relais.",
+  "inAppBrowser.message": "Ouvrez dans votre navigateur natif (Safari / Chrome) pour l’expérience plein écran et l’installation de l’app.",
+  "inAppBrowser.open": "Ouvrir dans Chrome",
+  "inAppBrowser.copy": "Copier le lien",
+  "inAppBrowser.copied": "Lien copié. Collez-le dans Safari ou Chrome.",
+  "inAppBrowser.copyFailed": "Échec de la copie. Utilisez le menu ⋯ → Ouvrir dans le navigateur.",
+  "inAppBrowser.dismiss": "Fermer"
 }

@@ -1,18 +1,20 @@
 {
   "id": "/",
-  "name": "ROUT — QR-codes en korte links met karakter",
+  "name": "ROUT Sovereign OS",
   "short_name": "ROUT",
-  "description": "Ontwerp stijlvolle QR-codes en trackbare korte links. Privacyvriendelijk en in eigen beheer.",
-  "start_url": "/",
+  "description": "Je soevereine identiteit, QR-codes, korte links en agenda in één app.",
+  "start_url": "/dashboard",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
   "orientation": "portrait-primary",
-  "background_color": "#FBF9F5",
-  "theme_color": "#FBF9F5",
+  "background_color": "#0B0B0C",
+  "theme_color": "#0B0B0C",
   "lang": "nl",
   "icons": [
     { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }

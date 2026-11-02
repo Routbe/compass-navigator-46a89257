@@ -1630,5 +1630,11 @@
   "tourEngine.identity.email.title": "Primäre E-Mail-Adresse",
   "tourEngine.identity.email.body": "Ändere hier deine Adresse. Die neue gilt erst nach Bestätigung.",
   "tourEngine.identity.push.title": "ROUT-Push-Protokoll",
-  "tourEngine.identity.push.body": "Sende eine Adressänderung an verknüpfte Apps ohne Relay."
+  "tourEngine.identity.push.body": "Sende eine Adressänderung an verknüpfte Apps ohne Relay.",
+  "inAppBrowser.message": "Öffne im nativen Browser (Safari / Chrome) für das volle Vollbild-Erlebnis und die App-Installation.",
+  "inAppBrowser.open": "In Chrome öffnen",
+  "inAppBrowser.copy": "Link kopieren",
+  "inAppBrowser.copied": "Link kopiert. Füge ihn in Safari oder Chrome ein.",
+  "inAppBrowser.copyFailed": "Kopieren fehlgeschlagen. Nutze das Menü ⋯ → Im Browser öffnen.",
+  "inAppBrowser.dismiss": "Schließen"
 }
