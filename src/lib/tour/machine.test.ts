@@ -62,7 +62,7 @@ describe("tour coverage", () => {
     expect(forPath("/dashboard")).toBe("commandCenter");
   });
   it("every step has a title and body in nl, en, fr and de", () => {
-    for (const dict of [nl, en, fr, de] as Record<string, string>[]) {
+    for (const dict of [nl, en, fr, de] as unknown as Record<string, string>[]) {
       for (const tour of Object.values(ALL_TOURS)) {
         for (const s of tour.steps) {
           expect(dict[`tourEngine.${tour.id}.${s.id}.title`], `${tour.id}.${s.id}`).toBeTruthy();
