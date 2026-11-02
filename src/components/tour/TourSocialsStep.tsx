@@ -40,7 +40,7 @@ export function TourSocialsStep({
               id={`tour-${item.kind}`}
               value={socials[item.kind] ?? ""}
               onChange={(e) => onChange(item.kind, e.target.value)}
-              placeholder={item.placeholder}
+              placeholder={item.placeholder.replace("jouwnaam", t("tour.socials.exName")).replace("jouwkanaal", t("tour.socials.exChannel")).replace("jouwsite", t("tour.socials.exSite"))}
               autoCapitalize="none"
               autoCorrect="off"
               spellCheck={false}

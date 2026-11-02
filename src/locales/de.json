@@ -1636,5 +1636,10 @@
   "inAppBrowser.copy": "Link kopieren",
   "inAppBrowser.copied": "Link kopiert. Füge ihn in Safari oder Chrome ein.",
   "inAppBrowser.copyFailed": "Kopieren fehlgeschlagen. Nutze das Menü ⋯ → Im Browser öffnen.",
-  "inAppBrowser.dismiss": "Schließen"
+  "inAppBrowser.dismiss": "Schließen",
+  "tour.handleExample": "deinname12",
+  "tour.avatar.placeholder": "https://…/foto.jpg",
+  "tour.socials.exName": "deinname",
+  "tour.socials.exChannel": "deinkanal",
+  "tour.socials.exSite": "deineseite"
 }

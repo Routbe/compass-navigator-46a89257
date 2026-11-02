@@ -48,7 +48,7 @@ export function TourProfileStep({
             autoCapitalize="none"
             autoCorrect="off"
             spellCheck={false}
-            placeholder="jouwnaam12"
+            placeholder={t("tour.handleExample")}
             className="border-0 bg-transparent px-0 shadow-none focus-visible:ring-0"
           />
           {state === "checking" && (

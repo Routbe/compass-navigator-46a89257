@@ -37,7 +37,7 @@ export function TourAvatarStep({
             id="tour-avatar"
             value={avatarUrl}
             onChange={(e) => onAvatarUrl(e.target.value)}
-            placeholder="https://…/foto.jpg"
+            placeholder={t("tour.avatar.placeholder")}
             spellCheck={false}
           />
         </div>
