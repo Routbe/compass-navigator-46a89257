@@ -1,6 +1,7 @@
 import { useRef, useState, type ReactElement } from "react";
 import { Link } from "@/lib/router-compat";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
 import {
   Dialog,
   DialogContent,
@@ -121,6 +122,15 @@ const SEALS: Seal[] = [
 
 /** Interactive seal grid: hover micro-interactions, click for verifiable proof. */
 export function TrustSealGrid() {
+  const { t } = useI18n();
+  const k = (id: string, part: string) => t(`pages.seals.${id}.${part}`);
+  const seals: Seal[] = SEALS.map((seal) => ({
+    ...seal,
+    label: k(seal.id, "label"),
+    tag: k(seal.id, "tag"),
+    claim: k(seal.id, "claim"),
+    proof: seal.proof.map((_, i) => ({ label: k(seal.id, `p${i}.label`), detail: k(seal.id, `p${i}.detail`) })),
+  }));
   const [open, setOpen] = useState<Seal | null>(null);
   const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const lastTriggerId = useRef<string | null>(null);
@@ -138,7 +148,7 @@ export function TrustSealGrid() {
   return (
     <>
       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
-        {SEALS.map((s, i) => (
+        {seals.map((s, i) => (
           <button
             key={s.id}
             id={s.id}
@@ -152,7 +162,7 @@ export function TrustSealGrid() {
             }}
             aria-haspopup="dialog"
             aria-expanded={open?.id === s.id}
-            aria-label={`${s.label} — view verifiable proof`}
+            aria-label={t("pages.seals.viewProof", { label: s.label })}
             className={cn(
               "group flex scroll-mt-24 cursor-pointer flex-col items-center justify-center rounded-xl border border-border/50 bg-card/40 p-4 text-center backdrop-blur-sm sm:p-5",
               "transition-all duration-300 ease-out hover:border-primary/60 hover:scale-[1.03]",
@@ -195,7 +205,7 @@ export function TrustSealGrid() {
                   to={open.href}
                   className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-4 py-2.5 text-xs font-medium transition-colors hover:bg-accent"
                 >
-                  Read the documentation
+                  {t("pages.seals.docs")}
                 </Link>
               ) : null}
             </>
