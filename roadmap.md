@@ -2,7 +2,8 @@
 
 - [x] Tours: all steps + welcome tour examples translated
 - [x] Home page (`/`) fully translated
-- [ ] Public marketing pages (product, sovereignty, developers, pricing, compare, solutions)
+- [x] Developers page (`/developers`)
+- [ ] Public pages: sovereignty, press, developer hub, growth blocks, product/compare/solutions (MDX)
 - [ ] About / safety / support / guide docs (90 MDX pages, currently one language)
 - [ ] Signed-in app: Studio, Command Center, Agenda, Settings, Domains, Booking, Tip page
 - [ ] Pop-ups, toasts and error messages
