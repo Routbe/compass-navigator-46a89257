@@ -186,6 +186,7 @@ function QuickQr() {
         }}
       >
         <input
+          data-tour="cc-qr-input"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="https://…"
@@ -412,7 +413,7 @@ function Slot({ id, editing, hidden, onToggle, className, children }: {
 }) {
   if (hidden && !editing) return null;
   return (
-    <div className={cn("relative min-w-0 [&>*]:h-full", editing && "rounded-2xl ring-1 ring-dashed ring-border", hidden && "opacity-40", className)}>
+    <div data-tour={`cc-${id}`} className={cn("relative min-w-0 [&>*]:h-full", editing && "rounded-2xl ring-1 ring-dashed ring-border", hidden && "opacity-40", className)}>
       {children}
       {editing ? (
         <Button
@@ -474,7 +475,7 @@ export function CommandCenter() {
       crumbs={[{ label: "Command Center" }]}
       actions={
         <div className="flex flex-wrap gap-2">
-          <Button size="sm" variant={isEditingDashboard ? "secondary" : "ghost"} className="gap-1.5" onClick={() => setIsEditingDashboard((v) => !v)} aria-pressed={isEditingDashboard}>
+          <Button data-tour="cc-customize" size="sm" variant={isEditingDashboard ? "secondary" : "ghost"} className="gap-1.5" onClick={() => setIsEditingDashboard((v) => !v)} aria-pressed={isEditingDashboard}>
             <SlidersHorizontal className="h-4 w-4" /> {isEditingDashboard ? "Klaar" : "Aanpassen"}
           </Button>
           <Button size="sm" variant="ghost" className="gap-1.5" onClick={() => void state.refresh()} disabled={state.syncing}>
@@ -485,7 +486,7 @@ export function CommandCenter() {
               <BarChart3 className="h-4 w-4" /> Assets &amp; statistieken
             </Link>
           </Button>
-          <Button asChild size="sm" className="gap-1.5">
+          <Button asChild size="sm" className="gap-1.5" data-tour="cc-studio">
             <Link to="/studio">
               <LayoutTemplate className="h-4 w-4" /> Studio
             </Link>

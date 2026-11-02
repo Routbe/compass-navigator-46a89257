@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { BarChart3, ChevronRight } from "lucide-react";
+import { BarChart3, ChevronRight, HelpCircle } from "lucide-react";
 import { Link } from "@/lib/router-compat";
 import { RoutLogo } from "@/components/RoutLogo";
 import { Footer } from "@/components/Footer";
@@ -15,7 +15,9 @@ import { MobileMenu } from "@/components/MobileMenu";
 import { LanguageToggle } from "@/components/LanguageToggle";
 
 import { cn } from "@/lib/utils";
-import { useMatches } from "@tanstack/react-router";
+import { useMatches, useRouterState } from "@tanstack/react-router";
+import { tourForPath } from "@/lib/tour/definitions";
+import { startTour } from "@/lib/tour/progress";
 import { usePortalFrame } from "./PortalContext";
 import { useHeaderReveal } from "@/hooks/useHeaderReveal";
 import { useReveal } from "@/hooks/useReveal";
@@ -64,6 +66,8 @@ export function AppLayout({
   const Frame = usePortalFrame();
   // Signed-in (OS) routes drop the marketing footer for one quiet status line.
   const isOsRoute = useMatches({ select: (ms) => ms.some((m) => m.routeId.startsWith("/_authenticated")) });
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const pageTour = isOsRoute ? tourForPath(pathname) : null;
   const heading = (
           (crumbs?.length || title) ? (
             <div className="mb-6 grid grid-cols-1 items-end gap-4 sm:flex sm:flex-wrap sm:justify-between">
@@ -91,7 +95,20 @@ export function AppLayout({
                   </nav>
                 ) : null}
                 {title ? (
-                  <h1 className="text-[28px] font-medium leading-tight sm:text-[34px]">{title}</h1>
+                  <h1 className="flex items-center gap-2 text-[28px] font-medium leading-tight sm:text-[34px]">
+                    {title}
+                    {pageTour ? (
+                      <button
+                        type="button"
+                        onClick={() => startTour(pageTour)}
+                        title={t(`tourEngine.palette.${pageTour}`)}
+                        aria-label={t(`tourEngine.palette.${pageTour}`)}
+                        className="inline-flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      >
+                        <HelpCircle className="h-4 w-4" />
+                      </button>
+                    ) : null}
+                  </h1>
                 ) : null}
                 {description ? (
                   <p className="mt-1 text-sm text-muted-foreground">{description}</p>

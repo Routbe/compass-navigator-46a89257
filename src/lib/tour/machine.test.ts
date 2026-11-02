@@ -49,3 +49,27 @@ describe("tour helpers", () => {
     expect(tourForPath("/dashboard/assets")).toBeNull();
   });
 });
+
+import { TOURS as ALL_TOURS, tourForPath as forPath } from "./definitions";
+import en from "@/locales/en.json";
+import nl from "@/locales/nl.json";
+import fr from "@/locales/fr.json";
+import de from "@/locales/de.json";
+
+describe("tour coverage", () => {
+  it("routes /dashboard/identity to the identity tour", () => {
+    expect(forPath("/dashboard/identity")).toBe("identity");
+    expect(forPath("/dashboard")).toBe("commandCenter");
+  });
+  it("every step has a title and body in nl, en, fr and de", () => {
+    for (const dict of [nl, en, fr, de] as Record<string, string>[]) {
+      for (const tour of Object.values(ALL_TOURS)) {
+        for (const s of tour.steps) {
+          expect(dict[`tourEngine.${tour.id}.${s.id}.title`], `${tour.id}.${s.id}`).toBeTruthy();
+          expect(dict[`tourEngine.${tour.id}.${s.id}.body`]).toBeTruthy();
+        }
+        expect(dict[`tourEngine.palette.${tour.id}`]).toBeTruthy();
+      }
+    }
+  });
+});

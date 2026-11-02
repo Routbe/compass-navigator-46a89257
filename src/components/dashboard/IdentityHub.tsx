@@ -112,7 +112,7 @@ export function IdentityHub() {
     >
       <div className="space-y-4">
         <SovereignTrustWidget />
-        <section className="space-y-3 rounded-2xl border border-border bg-card p-4 sm:p-5">
+        <section data-tour="identity-relays" className="space-y-3 rounded-2xl border border-border bg-card p-4 sm:p-5">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="flex items-center gap-2 text-lg font-medium">
               <Fingerprint className="h-4 w-4" /> Identity Relays
@@ -190,7 +190,7 @@ export function IdentityHub() {
           ) : null}
         </section>
 
-        <section className="space-y-3 rounded-2xl border border-border bg-card p-4 sm:p-5">
+        <section data-tour="identity-email" className="space-y-3 rounded-2xl border border-border bg-card p-4 sm:p-5">
           <h2 className="flex items-center gap-2 text-lg font-medium">
             <Mail className="h-4 w-4" /> Primair e-mailadres
           </h2>
@@ -220,7 +220,7 @@ export function IdentityHub() {
           </form>
         </section>
 
-        <section className="space-y-3 rounded-2xl border border-border bg-card p-4 sm:p-5">
+        <section data-tour="identity-push" className="space-y-3 rounded-2xl border border-border bg-card p-4 sm:p-5">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="flex items-center gap-2 text-lg font-medium">
               <Webhook className="h-4 w-4" /> ROUT Push Protocol <Badge variant="outline" className="text-xs font-normal">fallback</Badge>
