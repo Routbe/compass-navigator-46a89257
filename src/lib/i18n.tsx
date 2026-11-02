@@ -27,6 +27,11 @@ import aiNL from "@/locales/ai/nl.json";
 import aiEN from "@/locales/ai/en.json";
 import aiFR from "@/locales/ai/fr.json";
 import aiDE from "@/locales/ai/de.json";
+/** Per-page bundles: src/locales/pages/<page>.<locale>.json, merged per locale. */
+const PAGE_BUNDLES = import.meta.glob<{ default: Record<string, string> }>("../locales/pages/*.json", { eager: true });
+function pageBundle(locale: string): Record<string, string> {
+  return Object.assign({}, ...Object.entries(PAGE_BUNDLES).filter(([path]) => path.endsWith(`.${locale}.json`)).map(([, mod]) => mod.default));
+}
 
 export type Locale = "nl" | "en" | "fr" | "de";
 
@@ -52,10 +57,10 @@ export const COOKIE_KEY = "rout_lang";
 type TranslationBundle = Record<string, unknown>;
 
 const RESOURCES: Record<Locale, { translation: TranslationBundle }> = {
-  en: { translation: { ...(en as TranslationBundle), ...(authEN as TranslationBundle), ...(studioEN as TranslationBundle), ...(aiEN as TranslationBundle) } },
-  nl: { translation: { ...(nl as TranslationBundle), ...(authNL as TranslationBundle), ...(studioNL as TranslationBundle), ...(aiNL as TranslationBundle) } },
-  fr: { translation: { ...(fr as TranslationBundle), ...(authFR as TranslationBundle), ...(studioFR as TranslationBundle), ...(aiFR as TranslationBundle) } },
-  de: { translation: { ...(de as TranslationBundle), ...(authDE as TranslationBundle), ...(studioDE as TranslationBundle), ...(aiDE as TranslationBundle) } },
+  en: { translation: { ...(en as TranslationBundle), ...(authEN as TranslationBundle), ...(studioEN as TranslationBundle), ...(aiEN as TranslationBundle), ...(pageBundle("en") as TranslationBundle) } },
+  nl: { translation: { ...(nl as TranslationBundle), ...(authNL as TranslationBundle), ...(studioNL as TranslationBundle), ...(aiNL as TranslationBundle), ...(pageBundle("nl") as TranslationBundle) } },
+  fr: { translation: { ...(fr as TranslationBundle), ...(authFR as TranslationBundle), ...(studioFR as TranslationBundle), ...(aiFR as TranslationBundle), ...(pageBundle("fr") as TranslationBundle) } },
+  de: { translation: { ...(de as TranslationBundle), ...(authDE as TranslationBundle), ...(studioDE as TranslationBundle), ...(aiDE as TranslationBundle), ...(pageBundle("de") as TranslationBundle) } },
 };
 
 export function isLocale(value: unknown): value is Locale {
