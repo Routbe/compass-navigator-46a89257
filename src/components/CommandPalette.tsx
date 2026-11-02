@@ -11,6 +11,9 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { parseOmniInput } from "@/lib/omni-parser";
+import { useI18n } from "@/lib/i18n";
+import { TOURS, TOUR_IDS, type TourId } from "@/lib/tour/definitions";
+import { startTour } from "@/lib/tour/progress";
 
 const ITEMS = [
   { group: "Navigatie", label: "Studio", to: "/studio", Icon: Sparkles, keywords: "profiel ontwerp" },
@@ -30,6 +33,15 @@ export function CommandPalette() {
   const [query, setQuery] = useState("");
   const router = useRouter();
   const intent = useMemo(() => parseOmniInput(query), [query]);
+  const { t } = useI18n();
+
+  // Navigate first so the tour never starts on the wrong page, then force-reset it.
+  const runTour = async (id: TourId) => {
+    setOpen(false);
+    setQuery("");
+    await router.navigate({ to: TOURS[id].path });
+    startTour(id);
+  };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -79,6 +91,13 @@ export function CommandPalette() {
             ))}
           </CommandGroup>
         ))}
+        <CommandGroup heading={t("tourEngine.palette.group")}>
+          {TOUR_IDS.map((id) => (
+            <CommandItem key={id} value={`tour rondleiding ${t(`tourEngine.palette.${id}`)}`} onSelect={() => void runTour(id)}>
+              <Sparkles /> {t(`tourEngine.palette.${id}`)}
+            </CommandItem>
+          ))}
+        </CommandGroup>
       </CommandList>
     </CommandDialog>
   );
