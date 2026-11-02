@@ -1636,5 +1636,7 @@
   "inAppBrowser.copy": "Link kopiëren",
   "inAppBrowser.copied": "Link gekopieerd. Plak hem in Safari of Chrome.",
   "inAppBrowser.copyFailed": "Kopiëren lukte niet. Gebruik het menu ⋯ → Openen in browser.",
-  "inAppBrowser.dismiss": "Sluiten"
+  "inAppBrowser.dismiss": "Sluiten",
+  "tour.handleExample": "jouwnaam12",
+  "tour.avatar.placeholder": "https://…/foto.jpg"
 }

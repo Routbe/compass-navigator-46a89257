@@ -1636,5 +1636,7 @@
   "inAppBrowser.copy": "Copier le lien",
   "inAppBrowser.copied": "Lien copié. Collez-le dans Safari ou Chrome.",
   "inAppBrowser.copyFailed": "Échec de la copie. Utilisez le menu ⋯ → Ouvrir dans le navigateur.",
-  "inAppBrowser.dismiss": "Fermer"
+  "inAppBrowser.dismiss": "Fermer",
+  "tour.handleExample": "tonnom12",
+  "tour.avatar.placeholder": "https://…/photo.jpg"
 }

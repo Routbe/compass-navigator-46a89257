@@ -25,7 +25,7 @@ export function TourAccountStep({
 
       <div className="rounded-2xl border border-border bg-card p-4 text-sm">
         <p className="text-muted-foreground">{t("tour.account.firstAddress")}</p>
-        <p className="mt-1 font-medium">rout.be/u/{handle || "jouwnaam12"}</p>
+        <p className="mt-1 font-medium">rout.be/u/{handle || t("tour.handleExample")}</p>
         {displayName ? <p className="mt-1 text-muted-foreground">{displayName}</p> : null}
       </div>
 

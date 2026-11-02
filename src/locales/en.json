@@ -1636,5 +1636,7 @@
   "inAppBrowser.copy": "Copy link",
   "inAppBrowser.copied": "Link copied. Paste it into Safari or Chrome.",
   "inAppBrowser.copyFailed": "Copy failed. Use the ⋯ menu → Open in browser.",
-  "inAppBrowser.dismiss": "Close"
+  "inAppBrowser.dismiss": "Close",
+  "tour.handleExample": "yourname12",
+  "tour.avatar.placeholder": "https://…/photo.jpg"
 }
