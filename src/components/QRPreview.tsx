@@ -1160,7 +1160,7 @@ export function QRPreview({
   }, [toast, displayValue]);
 
   return (
-    <div ref={containerRef} className="flex flex-col items-center gap-6 w-full">
+    <div ref={containerRef} data-qr-container className="flex flex-col items-center gap-6 w-full">
       {/* QR Code Display — always rendered on a real white sheet (even in dark
           mode) so the preview stays scannable and print-accurate. */}
       <div

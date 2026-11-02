@@ -1229,7 +1229,7 @@ export function ProfileEditor({ variant = "verified", pageMode = "profile", onPa
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pb-5">
                   {/* Eén bron van waarheid: QR-styling gebeurt in de generator (Sociale profielhub). */}
-                  <section className="space-y-3 rounded-2xl border border-border bg-card p-4 sm:p-5" data-tour="studio-qr">
+                  <section className="space-y-3 rounded-2xl border border-border bg-card p-4 sm:p-5" data-tour="studio-qr" data-qr-container>
                     <h2 className="text-lg font-medium">{t("studio.editor.qr")}</h2>
                     <p className="text-sm text-muted-foreground">{t("studio.editor.qrHelp")}</p>
                     <a
