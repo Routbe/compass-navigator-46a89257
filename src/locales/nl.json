@@ -1630,5 +1630,11 @@
   "tourEngine.identity.email.title": "Primair e-mailadres",
   "tourEngine.identity.email.body": "Wijzig je adres hier. Het nieuwe wordt pas actief na bevestiging.",
   "tourEngine.identity.push.title": "ROUT Push Protocol",
-  "tourEngine.identity.push.body": "Stuur een adreswijziging door naar gekoppelde apps die geen relay gebruiken."
+  "tourEngine.identity.push.body": "Stuur een adreswijziging door naar gekoppelde apps die geen relay gebruiken.",
+  "inAppBrowser.message": "Open in je native browser (Safari / Chrome) voor de volledige fullscreen ervaring en PWA-installatie.",
+  "inAppBrowser.open": "Openen in Chrome",
+  "inAppBrowser.copy": "Link kopiëren",
+  "inAppBrowser.copied": "Link gekopieerd. Plak hem in Safari of Chrome.",
+  "inAppBrowser.copyFailed": "Kopiëren lukte niet. Gebruik het menu ⋯ → Openen in browser.",
+  "inAppBrowser.dismiss": "Sluiten"
 }

@@ -1,5 +1,6 @@
 import { CommandPalette } from "@/components/CommandPalette";
 import { TourHost } from "@/components/tour/TourHost";
+import { InAppBrowserBanner } from "@/components/pwa/InAppBrowserBanner";
 import { StepUpDialog } from "@/components/auth/StepUpDialog";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -146,7 +147,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-title", content: "ROUT" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { name: "mobile-web-app-capable", content: "yes" },
       { name: "application-name", content: "ROUT" },
     ],
     links: [
@@ -219,6 +219,7 @@ function RootComponent() {
                   <DevModeToggle />
                   <CommandPalette />
                   <TourHost />
+                  <InAppBrowserBanner />
               </ErrorBoundary>
             </AuthProvider>
           </TooltipProvider>
