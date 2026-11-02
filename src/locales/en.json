@@ -1638,5 +1638,8 @@
   "inAppBrowser.copyFailed": "Copy failed. Use the ⋯ menu → Open in browser.",
   "inAppBrowser.dismiss": "Close",
   "tour.handleExample": "yourname12",
-  "tour.avatar.placeholder": "https://…/photo.jpg"
+  "tour.avatar.placeholder": "https://…/photo.jpg",
+  "tour.socials.exName": "yourname",
+  "tour.socials.exChannel": "yourchannel",
+  "tour.socials.exSite": "yoursite"
 }
