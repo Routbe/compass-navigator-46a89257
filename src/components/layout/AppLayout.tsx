@@ -120,12 +120,12 @@ export function AppLayout({
   );
   if (Frame) return <Frame heading={heading} width={width}>{children}</Frame>;
   return (
-    <div className={cn("flex min-h-screen flex-col bg-background text-foreground", tone === "obsidian" && "dark")}>
+    <div className={cn("flex min-h-screen flex-col bg-background pb-[env(safe-area-inset-bottom)] text-foreground", tone === "obsidian" && "dark")}>
       <header
         data-testid="app-header"
         data-hidden={hidden ? "true" : "false"}
         className={cn(
-          "fixed left-0 right-0 top-0 z-50 w-full border-b border-border/50 bg-background/90 backdrop-blur-md transition-transform duration-300 ease-in-out",
+          "fixed left-0 right-0 top-0 z-50 w-full pt-[env(safe-area-inset-top)] border-b border-border/50 bg-background/90 backdrop-blur-md transition-transform duration-300 ease-in-out",
           hidden ? "-translate-y-full" : "translate-y-0",
         )}
       >
@@ -149,7 +149,7 @@ export function AppLayout({
         </div>
       </header>
 
-      <main className="flex-1 pt-16">
+      <main className="flex-1 pt-[calc(4rem+env(safe-area-inset-top))]">
         <div
           className={cn(
             "mx-auto w-full min-w-0",
