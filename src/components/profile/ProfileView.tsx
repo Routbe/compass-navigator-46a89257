@@ -328,7 +328,7 @@ export function ProfileView({
     <main
       ref={mainRef}
       data-profile-theme={t.id}
-      className={`relative isolate min-h-screen w-full overflow-hidden px-4 pb-12 ${banner ? "pt-0" : "pt-12"} ${wireframe ? "rout-wireframe" : ""}`}
+      className={`relative isolate min-h-screen w-full overflow-hidden px-4 pb-[calc(3rem+env(safe-area-inset-bottom))] ${banner ? "pt-0" : "pt-[calc(3rem+env(safe-area-inset-top))]"} ${wireframe ? "rout-wireframe" : ""}`}
       style={{
         ...surface,
         color: t.text,
@@ -337,7 +337,7 @@ export function ProfileView({
       }}
     >
       {shownPath && (
-        <div className="absolute right-4 top-4 z-10">
+        <div className="absolute right-4 top-[calc(1rem+env(safe-area-inset-top))] z-10">
           <ShareMenu
             url={`https://rout.be${shownPath}`}
             handle={profile.username ?? shownPath.split("/").pop() ?? ""}
