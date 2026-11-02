@@ -64,7 +64,7 @@ function AgendaPage() {
     <AppLayout title={TITLE} description={DESC} width="wide"
       actions={<Button asChild variant="outline" size="sm"><Link to="/studio/booking">Afspraaktypes & beschikbaarheid</Link></Button>}>
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_360px]">
-        <section className="rounded-2xl border border-border bg-card p-5">
+        <section data-tour="agenda-list" className="rounded-2xl border border-border bg-card p-5">
           <h2 className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Je agenda's</h2>
           {cals.isLoading ? (
             <Loader2 className="mt-4 h-4 w-4 animate-spin text-muted-foreground" />
@@ -118,8 +118,8 @@ function AgendaPage() {
           <h2 className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             <CalendarDays className="h-3.5 w-3.5" /> Nieuwe agenda
           </h2>
-          <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Bijv. Kennismaking 15 min" maxLength={120} aria-label="Titel" />
-          <div className="grid grid-cols-2 gap-2">
+          <Input data-tour="agenda-title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Bijv. Kennismaking 15 min" maxLength={120} aria-label="Titel" />
+          <div data-tour="agenda-mode" className="grid grid-cols-2 gap-2">
             {(["sovereign", "linked"] as const).map((m) => (
               <button type="button" key={m} onClick={() => setMode(m)}
                 className={`rounded-xl border p-3 text-left text-xs ${mode === m ? "border-foreground bg-muted/50" : "border-border"}`}>
@@ -136,7 +136,7 @@ function AgendaPage() {
           <p className="text-xs text-muted-foreground">
             {mode === "sovereign" ? "Een onherleidbare link: bezoekers zien niet wie de agenda beheert." : "Zichtbaar op je publieke identiteit."}
           </p>
-          <Button type="submit" className="w-full gap-1.5" disabled={busy || !title.trim()}>
+          <Button data-tour="agenda-create" type="submit" className="w-full gap-1.5" disabled={busy || !title.trim()}>
             {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />} Aanmaken
           </Button>
         </form>

@@ -3,7 +3,7 @@
  * `tourEngine.<tour>.<step>.title|body`. Steps name a DOM target via
  * `data-tour` and optionally the user action that advances them.
  */
-export type TourId = "studio" | "commandCenter" | "agenda";
+export type TourId = "studio" | "commandCenter" | "agenda" | "identity";
 
 export type AdvanceOn =
   | { kind: "click" }
@@ -56,6 +56,15 @@ export const TOURS: Record<TourId, TourDef> = {
       { id: "list", target: "agenda-list" },
     ],
   },
+  identity: {
+    id: "identity",
+    path: "/dashboard/identity",
+    steps: [
+      { id: "relays", target: "identity-relays" },
+      { id: "email", target: "identity-email" },
+      { id: "push", target: "identity-push" },
+    ],
+  },
 };
 
 export const TOUR_IDS = Object.keys(TOURS) as TourId[];
@@ -81,6 +90,7 @@ export function looksLikeUrl(value: string): boolean {
 }
 
 export function tourForPath(pathname: string): TourId | null {
+  if (pathname.startsWith("/dashboard/identity")) return "identity";
   if (pathname === "/dashboard" || pathname === "/dashboard/") return "commandCenter";
   if (pathname.startsWith("/agenda")) return "agenda";
   if (pathname === "/studio" || pathname === "/studio/") return "studio";

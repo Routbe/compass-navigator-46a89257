@@ -1,4 +1,5 @@
 import { CommandPalette } from "@/components/CommandPalette";
+import { TourHost } from "@/components/tour/TourHost";
 import { StepUpDialog } from "@/components/auth/StepUpDialog";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -216,6 +217,7 @@ function RootComponent() {
                   </ShellSwitch>
                   <DevModeToggle />
                   <CommandPalette />
+                  <TourHost />
               </ErrorBoundary>
             </AuthProvider>
           </TooltipProvider>
