@@ -35,10 +35,10 @@ const PKCE_JS = `// Server-side start handler: only run after the form's explici
 const clientId = process.env.ROUT_CLIENT_ID;
 const redirectUri = process.env.ROUT_REDIRECT_URI; // exact registered URL in YOUR app
 if (!clientId || !redirectUri) throw new Error("ROUT is not configured");
-// 1. Discovery ophalen (nooit endpoints hardcoden)
+// 1. Fetch discovery (never hardcode endpoints)
 const oidc = await fetch("${DISCOVERY_URL}").then((r) => r.json());
 
-// 2. Per poging: verifier, state en nonce — bewaar ze in een HttpOnly-cookie
+// 2. Per attempt: verifier, state and nonce — keep them in an HttpOnly cookie
 const b64 = (b) => btoa(String.fromCharCode(...new Uint8Array(b)))
   .replace(/\\+/g, "-").replace(/\\//g, "_").replace(/=+$/, "");
 const verifier = b64(crypto.getRandomValues(new Uint8Array(32)));
@@ -46,7 +46,7 @@ const challenge = b64(await crypto.subtle.digest("SHA-256", new TextEncoder().en
 const state = crypto.randomUUID();
 const nonce = crypto.randomUUID();
 
-// 3. Doorsturen
+// 3. Redirect
 const url = new URL(oidc.authorization_endpoint);
 url.search = new URLSearchParams({
   response_type: "code",
@@ -60,7 +60,7 @@ url.search = new URLSearchParams({
 // Persist verifier/state/nonce in a short-lived HttpOnly Secure SameSite=Lax cookie,
 // then return a redirect to url. Never run this when the page merely loads.`;
 
-const TOKEN_JS = `// Op je server, in /auth/callback/rout — na controle van state
+const TOKEN_JS = `// On your server, in /auth/callback/rout — after checking state
 const res = await fetch(oidc.token_endpoint, {
   method: "POST",
   headers: { "content-type": "application/x-www-form-urlencoded" },
@@ -68,11 +68,11 @@ const res = await fetch(oidc.token_endpoint, {
     grant_type: "authorization_code",
     code, redirect_uri, code_verifier: verifier,
     client_id: process.env.ROUT_CLIENT_ID,
-    client_secret: process.env.ROUT_CLIENT_SECRET, // nooit in de browser
+    client_secret: process.env.ROUT_CLIENT_SECRET, // never in the browser
   }),
 });
 const { id_token, access_token } = await res.json();
-// Controleer id_token via jwks_uri (ES256): iss, aud === client_id, exp en nonce.`;
+// Verify id_token via jwks_uri (ES256): iss, aud === client_id, exp and nonce.`;
 
 const SCHEMA_SQL = `alter table users add column if not exists rout_id text unique;
 alter table users add column if not exists email_verified boolean not null default false;
