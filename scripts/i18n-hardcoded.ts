@@ -2,7 +2,7 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const ROOTS = ["src/components", "src/pages"];
+const ROOTS = ["src/components", "src/routes"].filter((r) => { try { return statSync(r).isDirectory(); } catch { return false; } });
 const ATTR = /\b(placeholder|aria-label|title)="([^"{]*[A-Za-zÀ-ÿ]{3,}[^"]*)"/g;
 const TEXT = />\s*([A-Za-zÀ-ÿ][^<>{}]{2,})\s*</g;
 const files: string[] = [];
